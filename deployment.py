@@ -4,6 +4,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import pickle
 
+st.set_page_config(page_title="Deployment", page_icon="🐨")
+
 # Load models
 with open('foodprod_model.pkl', 'rb') as f:
     birch = pickle.load(f)
