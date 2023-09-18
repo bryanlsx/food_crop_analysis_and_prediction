@@ -29,7 +29,7 @@ clusters_list_birch_foodwl = df_birch_wl_birch[['Item', 'Cluster_Class']].sort_v
 def food_security_prediction(user_input):
     df_temp = df_prod_copy.copy()
     df_temp.loc[df_temp.shape[0]] = user_input
-    scaled_data = scaler.fit_transform(df_temp[['Area harvested', 'Production']])
+    scaled_data = scaler.fit_transform(df_temp[['Area harvested (ha)', 'Production (tonnes)']])
     prediction = birch.predict(scaled_data)
     cluster = prediction[-1]  # taking the prediction for the last row which is our input
     efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent production efficiency'}
@@ -80,12 +80,12 @@ crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, W
 # Food Security Sliders
 st.subheader('Food Production Parameters')
 user_input_fs = {
-    'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min()), int(df_prod_copy['Area harvested'].max())),
-    'Production': st.slider('Production', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
+    'Area harvested': st.slider('Area harvested (ha)', int(df_prod_copy['Area harvested ()'].min()), int(df_prod_copy['Area harvested'].max())),
+    'Production': st.slider('Production (tonnes)', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
 }
 
 # Food Waste/Loss Sliders
-st.subheader('Food Waste/Loss Parameters')
+st.subheader('Food Waste/Loss Parameters (tonnes)')
 user_input_fwl = {
     'Item': crop_name,
     'Export Quantity': 0,
