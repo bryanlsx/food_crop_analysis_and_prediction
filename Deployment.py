@@ -4,8 +4,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import pickle
 
-st.set_page_config(page_title="Deployment", page_icon="🐨")
-
 # Load models
 with open('foodprod_model.pkl', 'rb') as f:
     birch = pickle.load(f)
@@ -85,7 +83,7 @@ user_input_fs = {
 }
 
 # Food Waste/Loss Sliders
-st.subheader('Food Waste/Loss Parameters (tonnes)')
+st.subheader('Food Waste/Loss Parameters')
 user_input_fwl = {
     'Item': crop_name,
     'Export Quantity': 0,
