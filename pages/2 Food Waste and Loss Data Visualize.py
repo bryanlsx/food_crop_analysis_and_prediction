@@ -68,7 +68,6 @@ st.divider()
 fig = ff.create_2d_density(
         x=fwl_transformed['Feed'], 
         y=fwl_transformed['Loss'], 
-        colorscale='balance'
     )
 fig.update_layout(title='2D Density Plot of Feed vs Loss')
 st.plotly_chart(fig)
