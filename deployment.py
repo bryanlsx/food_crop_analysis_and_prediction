@@ -70,7 +70,7 @@ wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == se
 emission = {0: 'High GHG level Emission', 1: 'Moderate level GHG Emission', 2: 'Low level GHG Emission'}
 st.write(f"GHG emission level for ({selected_crop}) : {emission[wl_cluster]}")
 
-st.header('Custom Crop Analysis')
+st.header('Custom Crop Prediction')
 
 # Custom Crop Name
 crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, Wheat...')
