@@ -38,17 +38,17 @@ import streamlit as st
 
 # Define a function to get color based on the efficiency or emission level
 def get_color_pe(prod_val):
-    if '0' in val:
+    if '0' in prod_val:
         return '#2ECC71'  # green
-    elif '1' in val:
+    elif '1' in prod_val:
         return '#E74C3C'  # red
     else:
         return '#F39C12'  # yellow
     
 def get_color_fwl(emission_val):
-    if '0' in val:
+    if '0' in emission_val:
         return '#E74C3C'  # green
-    elif '1' in val:
+    elif '1' in emission_val:
         return '#2ECC71'  # red
     else:
         return '#F39C12'  # yellow
