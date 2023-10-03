@@ -70,7 +70,7 @@ crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, W
 # Food Security Sliders
 st.subheader('Food Production Parameters')
 user_input_fs = {
-    'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min()), int(df_prod_copy['Area harvested'].max())),
+    'Area harvested': st.slider('Area harvested', 'min', int(df_prod_copy['Area harvested'].max())),
     'Production': st.slider('Production', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
 }
 
