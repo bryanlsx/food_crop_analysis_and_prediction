@@ -67,11 +67,36 @@ st.title('Custom Crop Prediction')
 # Custom Crop Name
 crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, Wheat...')
 
+# # Food Security Sliders
+# st.subheader('Food Production Parameters')
+# user_input_fs = {
+#     'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min()), int(df_prod_copy['Area harvested'].max())),
+#     'Production': st.slider('Production', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
+# }
+
+# # Food Waste/Loss Sliders
+# st.subheader('Food Waste/Loss Parameters')
+# user_input_fwl = {
+#     'Item': crop_name,
+#     'Export Quantity': 0,
+#     'Production': 0
+# }
+
+# for col, limits in slider_limits.items():
+#     user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
+
+# # Button to Predict for Custom Crop
+# if st.button('Predict for Custom Crop'):
+#     fs_result = food_security_prediction(user_input_fs)
+#     fwl_result = food_waste_prediction(user_input_fwl, crop_name)
+#     result = f"{crop_name} has {fs_result} and {fwl_result}"
+#     st.markdown(result, unsafe_allow_html=True)
+
 # Food Security Sliders
 st.subheader('Food Production Parameters')
 user_input_fs = {
-    'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min()), int(df_prod_copy['Area harvested'].max())),
-    'Production': st.slider('Production', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
+    'Area harvested': st.slider('Area harvested', "min", "max"),
+    'Production': st.slider('Production', "min", "max")
 }
 
 # Food Waste/Loss Sliders
@@ -83,7 +108,7 @@ user_input_fwl = {
 }
 
 for col, limits in slider_limits.items():
-    user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
+    user_input_fwl[col] = st.slider(col, "min", "max")
 
 # Button to Predict for Custom Crop
 if st.button('Predict for Custom Crop'):
