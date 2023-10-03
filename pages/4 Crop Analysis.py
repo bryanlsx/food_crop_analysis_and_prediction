@@ -37,7 +37,7 @@ import streamlit as st
 # Assuming you have the necessary clusters and mappings already set up...
 
 # Define a function to get color based on the efficiency or emission level
-def get_color_pe(val):
+def get_color_pe(prod_val):
     if '0' in val:
         return '#2ECC71'  # green
     elif '1' in val:
@@ -45,7 +45,7 @@ def get_color_pe(val):
     else:
         return '#F39C12'  # yellow
     
-def get_color_fwl(val):
+def get_color_fwl(emission_val):
     if '0' in val:
         return '#E74C3C'  # green
     elif '1' in val:
@@ -54,8 +54,8 @@ def get_color_fwl(val):
         return '#F39C12'  # yellow
 
 # Retrieve the production efficiency and GHG emission level
-prod_val = str(prod_efficiency[prod_cluster])
-emission_val = str(emission[wl_cluster])
+prod_val = prod_efficiency[prod_cluster]
+emission_val = emission[wl_cluster]
 
 # Display the information using cards with color coding
 st.markdown(f"""
