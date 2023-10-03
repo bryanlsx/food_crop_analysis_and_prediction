@@ -34,7 +34,7 @@ st.write(f"GHG emission level for <{selected_crop}> : {emission[wl_cluster]}")
 
 # Display the dataset for the selected crop
 selected_crop_data_fs = df_prod_copy[df_prod_copy['Item'] == selected_crop]
-selected_crop_data_fwl = df_prod_copy[df_birch_wl_birch['Item'] == selected_crop]
+selected_crop_data_fwl = df_birch_wl_birch[df_birch_wl_birch['Item'] == selected_crop]
 st.subheader(f'Data for {selected_crop}')
 st.dataframe(selected_crop_data_fs)
 st.dataframe(selected_crop_data_fwl)
