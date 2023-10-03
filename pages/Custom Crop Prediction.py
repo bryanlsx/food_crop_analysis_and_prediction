@@ -86,7 +86,7 @@ for col, limits in slider_limits.items():
     user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
 
 # Button to Predict for Custom Crop
-if st.button('Predict for Custom Crop'):
+if st.button('See how your crop performs!'):
     fs_result = food_security_prediction(user_input_fs)
     fwl_result = food_waste_prediction(user_input_fwl, crop_name)
     result = f"{crop_name} has {fs_result} and {fwl_result}"
