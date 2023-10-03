@@ -68,12 +68,12 @@ st.markdown(f"""
     }}
 </style>
 
-<div class="info-card" style="background-color: {get_color(prod_val)};">
+<div class="info-card" style="background-color: {get_color_pe(prod_val)};">
     <h4>Production Efficiency for {selected_crop}</h4>
     <p>{prod_val}</p>
 </div>
 
-<div class="info-card" style="background-color: {get_color(emission_val)};">
+<div class="info-card" style="background-color: {get_color_fwl(emission_val)};">
     <h4>GHG Emission Level for {selected_crop}</h4>
     <p>{emission_val}</p>
 </div>
