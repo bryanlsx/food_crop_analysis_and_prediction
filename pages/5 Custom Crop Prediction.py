@@ -65,6 +65,12 @@ def get_color_fwl(cluster_num):
         return '#2ECC71'  # green
     else:
         return '#F39C12'  # yellow
+    
+# Min-max values for sliders
+slider_limits = {
+    column: (fwl_transformed[column].min(), fwl_transformed[column].max())
+    for column in ['Feed', 'Import Quantity', 'Loss', 'Other uses (non-food)', 'Processed', 'Residuals', 'Stock Variation']
+}
 
 # Streamlit UI
 st.title('Custom Crop Prediction')
@@ -107,6 +113,7 @@ if st.button('See how your crop performs!'):
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }}
     </style>
+
     <div class="info-card" style="background-color: {get_color_pe(fs_cluster)};">
         <h4>Production Efficiency for {crop_name}</h4>
         <p>{efficiency[fs_cluster]}</p>
