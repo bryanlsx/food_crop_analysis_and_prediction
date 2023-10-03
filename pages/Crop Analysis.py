@@ -14,7 +14,11 @@ clusters_list_birch_foodprod = df_prod_copy[['Item', 'Cluster_Class']].sort_valu
 clusters_list_birch_foodwl = df_birch_wl_birch[['Item', 'Cluster_Class']].sort_values(by='Cluster_Class').reset_index(drop=True)
 
 # Streamlit UI
-st.title('Crop Cluster Prediction and Analysis')
+st.title('Crop Analysis Overview')
+st.header('Results from our Analysis')
+st.image("cluster_img_food_sec.png", caption="Cluster for Food Security", use_column_width=True)
+st.image("cluster_img_food_wl.png", caption="Cluster for Food Waste & Loss", use_column_width=True)
+st.image("performance_measure.png", caption="Performance Measure of Attempted Models", use_column_width=True)
 
 st.header('Crop Analysis')
 selected_crop = st.selectbox('Choose a crop:', df_birch_wl_birch['Item'].unique())
@@ -28,6 +32,3 @@ wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == se
 emission = {0: 'High GHG level Emission', 1: 'Moderate level GHG Emission', 2: 'Low level GHG Emission'}
 st.write(f"GHG emission level for ({selected_crop}) : {emission[wl_cluster]}")
 
-st.image("cluster_img_food_sec.png", caption="Cluster for Food Security", use_column_width=True)
-st.image("cluster_img_food_wl.png", caption="Cluster for Food Waste & Loss", use_column_width=True)
-st.image("performance_measure.png", caption="Performance Measure of Attempted Models", use_column_width=True)
