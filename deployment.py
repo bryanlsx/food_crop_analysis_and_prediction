@@ -1,26 +1,3 @@
-
-st.sidebar.title("Navigation")
-app_mode = st.sidebar.selectbox("Choose the section:", [
-    "Food Security Data Visualize",
-    "Food Waste and Loos Data Visualize",
-    "GHG Emission Data Visualize",
-    "Crop Analysis",
-    "Custom Crop Prediction"
-])
-
-if app_mode == "Food Security Data Visualize":
-    from pages import food_security
-    food_security.app()
-elif app_mode == "Food Waste and Loos Data Visualize":
-    from pages import food_waste_loss
-    food_waste_loss.app()
-elif app_mode == "GHG Emission Data Visualize":
-    from pages import ghg_emission
-    ghg_emission.app()
-elif app_mode == "Crop Analysis":
-    crop_analysis()
-elif app_mode == "Custom Crop Prediction":
-    custom_crop_prediction()
 import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -81,8 +58,6 @@ slider_limits = {
 # Streamlit UI
 st.title('Crop Cluster Prediction and Analysis')
 
-st.write("The crops analyzed in this section are sourced from the FAOSTAT dataset.")
-
 st.header('Crop Analysis')
 selected_crop = st.selectbox('Choose a crop:', df_birch_wl_birch['Item'].unique())
 
@@ -103,8 +78,8 @@ crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, W
 # Food Security Sliders
 st.subheader('Food Production Parameters')
 user_input_fs = {
-    'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min(format="min --- max")), int(df_prod_copy['Area harvested'].max())),
-    'Production': st.slider('Production', int(df_prod_copy['Production'].min(format="min --- max")), int(df_prod_copy['Production'].max()))
+    'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min()), int(df_prod_copy['Area harvested'].max())),
+    'Production': st.slider('Production', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
 }
 
 # Food Waste/Loss Sliders
@@ -116,7 +91,7 @@ user_input_fwl = {
 }
 
 for col, limits in slider_limits.items():
-    user_input_fwl[col] = st.slider(col, int(limits[0], format="min --- max"), int(limits[1]))
+    user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
 
 # Button to Predict for Custom Crop
 if st.button('Predict for Custom Crop'):
