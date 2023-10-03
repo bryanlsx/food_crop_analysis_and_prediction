@@ -33,7 +33,9 @@ emission = {0: 'High GHG level Emission', 1: 'Low level GHG Emission', 2: 'Moder
 st.write(f"GHG emission level for <{selected_crop}> : {emission[wl_cluster]}")
 
 # Display the dataset for the selected crop
-selected_crop_data = df_prod_copy[df_prod_copy['Item'] == selected_crop]
+selected_crop_data_fs = df_prod_copy[df_prod_copy['Item'] == selected_crop]
+selected_crop_data_fwl = df_prod_copy[df_birch_wl_birch['Item'] == selected_crop]
 st.subheader(f'Data for {selected_crop}')
-st.dataframe(selected_crop_data)
+st.dataframe(selected_crop_data_fs)
+st.dataframe(selected_crop_data_fwl)
 
