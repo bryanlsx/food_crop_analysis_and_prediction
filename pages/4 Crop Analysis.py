@@ -13,27 +13,28 @@ fwl_transformed = load_data('fwl_transformed.csv')
 clusters_list_birch_foodprod = df_prod_copy[['Item', 'Cluster_Class']].sort_values(by='Cluster_Class').reset_index(drop=True)
 clusters_list_birch_foodwl = df_birch_wl_birch[['Item', 'Cluster_Class']].sort_values(by='Cluster_Class').reset_index(drop=True)
 
-# Streamlit UI
 st.title('Crop Analysis Overview')
 st.header('Results from our Analysis')
 st.image("cluster_results.png", caption="Result of Clustering", use_column_width=True)
-main_df = pd.read_csv("df_prod_copy.csv")
+
+st.subheader('Recap on FWL Dataset')
+main_df = pd.read_csv("fwl_transformed.csv")
 st.dataframe(main_df)
+
 st.image("overall_perf.png", caption="Model Performance Overview", use_column_width=True)
 
 st.header('Crop Analysis')
 selected_crop = st.selectbox('Choose a crop (all crops are from the FAOSTAT dataset):', df_birch_wl_birch['Item'].unique())
 
-# Display clustering info based on selected crop
+# clustering info based on selected crop
 prod_cluster = clusters_list_birch_foodprod[clusters_list_birch_foodprod['Item'] == selected_crop]['Cluster_Class'].values[0]
 prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent Production Efficiency'}
-# st.write(f"Production efficiency for <{selected_crop}> : {prod_efficiency[prod_cluster]}")
 
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
 emission = {0: 'High GHG level Emission', 1: 'Low level GHG Emission', 2: 'Moderate GHG level Emission'}
-# st.write(f"GHG emission level for <{selected_crop}> : {emission[wl_cluster]}")
 
-# Define a function to get color based on the efficiency or emission level
+
+# Define function to get color based on the efficiency or emission level
 def get_color_pe(cluster_num):
     if cluster_num == 0:
         return '#2ECC71'  # green
