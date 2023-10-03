@@ -82,16 +82,6 @@ crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, W
 #     'Production': 0
 # }
 
-# for col, limits in slider_limits.items():
-#     user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
-
-# # Button to Predict for Custom Crop
-# if st.button('Predict for Custom Crop'):
-#     fs_result = food_security_prediction(user_input_fs)
-#     fwl_result = food_waste_prediction(user_input_fwl, crop_name)
-#     result = f"{crop_name} has {fs_result} and {fwl_result}"
-#     st.markdown(result, unsafe_allow_html=True)
-
 # Food Security Sliders
 st.subheader('Food Production Parameters')
 user_input_fs = {
@@ -108,7 +98,7 @@ user_input_fwl = {
 }
 
 for col, limits in slider_limits.items():
-    user_input_fwl[col] = st.slider(col, "min", "max")
+    user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
 
 # Button to Predict for Custom Crop
 if st.button('Predict for Custom Crop'):
