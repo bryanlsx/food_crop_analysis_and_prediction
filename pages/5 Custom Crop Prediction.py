@@ -97,6 +97,9 @@ user_input_fwl = {
 for col, limits in slider_limits.items():
     user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
 
+if crop_name == '':
+    crop_name = 'Unknown Plant'
+
 # Button to Predict for Custom Crop
 if st.button('See how your crop performs!'):
     fs_cluster = food_security_prediction(user_input_fs)
