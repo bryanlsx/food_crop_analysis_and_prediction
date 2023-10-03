@@ -107,7 +107,6 @@ if st.button('See how your crop performs!'):
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }}
     </style>
-
     <div class="info-card" style="background-color: {get_color_pe(fs_cluster)};">
         <h4>Production Efficiency for {crop_name}</h4>
         <p>{efficiency[fs_cluster]}</p>
