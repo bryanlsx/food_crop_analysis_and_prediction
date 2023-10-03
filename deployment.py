@@ -1,3 +1,4 @@
+
 st.sidebar.title("Navigation")
 app_mode = st.sidebar.selectbox("Choose the section:", [
     "Food Security Data Visualize",
