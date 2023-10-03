@@ -47,15 +47,15 @@ def get_color_pe(prod_val):
     
 def get_color_fwl(emission_val):
     if '0' in emission_val:
-        return '#E74C3C'  # green
+        return '#E74C3C'  # red
     elif '1' in emission_val:
-        return '#2ECC71'  # red
+        return '#2ECC71'  # green
     else:
         return '#F39C12'  # yellow
 
 # Retrieve the production efficiency and GHG emission level
-prod_val = prod_efficiency[prod_cluster]
-emission_val = emission[wl_cluster]
+prod_val = str(prod_efficiency[prod_cluster])
+emission_val = str(emission[wl_cluster])
 
 # Display the information using cards with color coding
 st.markdown(f"""
