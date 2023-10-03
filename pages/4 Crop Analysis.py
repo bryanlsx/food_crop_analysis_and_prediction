@@ -27,11 +27,57 @@ selected_crop = st.selectbox('Choose a crop (all crops are from the FAOSTAT data
 # Display clustering info based on selected crop
 prod_cluster = clusters_list_birch_foodprod[clusters_list_birch_foodprod['Item'] == selected_crop]['Cluster_Class'].values[0]
 prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent Production Efficiency'}
-st.write(f"Production efficiency for <{selected_crop}> : {prod_efficiency[prod_cluster]}")
+# st.write(f"Production efficiency for <{selected_crop}> : {prod_efficiency[prod_cluster]}")
 
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
 emission = {0: 'High GHG level Emission', 1: 'Low level GHG Emission', 2: 'Moderate GHG level Emission'}
-st.write(f"GHG emission level for <{selected_crop}> : {emission[wl_cluster]}")
+# st.write(f"GHG emission level for <{selected_crop}> : {emission[wl_cluster]}")
+import streamlit as st
+
+# Assuming you have the necessary clusters and mappings already set up...
+
+# Define a function to get color based on the efficiency or emission level
+def get_color_pe(val):
+    if 0 in val:
+        return '#2ECC71'  # green
+    elif 1 in val:
+        return '#E74C3C'  # red
+    else:
+        return '#F39C12'  # yellow
+    
+def get_color_fwl(val):
+    if 0 in val:
+        return '#E74C3C'  # green
+    elif 1 in val:
+        return '#2ECC71'  # red
+    else:
+        return '#F39C12'  # yellow
+
+# Retrieve the production efficiency and GHG emission level
+prod_val = prod_efficiency[prod_cluster]
+emission_val = emission[wl_cluster]
+
+# Display the information using cards with color coding
+st.markdown(f"""
+<style>
+    .info-card {{
+        padding: 10px 20px;
+        margin: 10px 0px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }}
+</style>
+
+<div class="info-card" style="background-color: {get_color(prod_val)};">
+    <h4>Production Efficiency for {selected_crop}</h4>
+    <p>{prod_val}</p>
+</div>
+
+<div class="info-card" style="background-color: {get_color(emission_val)};">
+    <h4>GHG Emission Level for {selected_crop}</h4>
+    <p>{emission_val}</p>
+</div>
+""", unsafe_allow_html=True)
 
 # Display the dataset for the selected crop
 selected_crop_data_fs = df_prod_copy[df_prod_copy['Item'] == selected_crop]
