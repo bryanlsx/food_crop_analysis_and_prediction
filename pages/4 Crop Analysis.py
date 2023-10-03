@@ -16,9 +16,10 @@ clusters_list_birch_foodwl = df_birch_wl_birch[['Item', 'Cluster_Class']].sort_v
 # Streamlit UI
 st.title('Crop Analysis Overview')
 st.header('Results from our Analysis')
-st.image("cluster_img_food_sec.png", caption="Cluster for Food Security", use_column_width=True)
-st.image("cluster_img_food_wl.png", caption="Cluster for Food Waste & Loss", use_column_width=True)
-st.image("performance_measure.png", caption="Performance Measure of Attempted Models", use_column_width=True)
+st.image("cluster_results.png", caption="Result of Clustering", use_column_width=True)
+main_df = pd.read_csv("df_prod_copy.csv")
+st.dataframe(main_df)
+st.image("overall_perf.png", caption="Model Performance Overview", use_column_width=True)
 
 st.header('Crop Analysis')
 selected_crop = st.selectbox('Choose a crop (all crops are from the FAOSTAT dataset):', df_birch_wl_birch['Item'].unique())
