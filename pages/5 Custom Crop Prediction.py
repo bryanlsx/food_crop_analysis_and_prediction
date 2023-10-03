@@ -68,7 +68,7 @@ def get_color_fwl(cluster_num):
     
 # Min-max values for sliders
 slider_limits = {
-    column: (fwl_transformed[column].min(), fwl_transformed[column].max())
+    column: ((fwl_transformed[column].min()), fwl_transformed[column].max())
     for column in ['Feed', 'Import Quantity', 'Loss', 'Other uses (non-food)', 'Processed', 'Residuals', 'Stock Variation']
 }
 
@@ -95,7 +95,7 @@ user_input_fwl = {
 }
 
 for col, limits in slider_limits.items():
-    user_input_fwl[col] = st.slider(col, int(limits[0]), int(limits[1]))
+    user_input_fwl[col] = st.slider(col + " (tonnes)", int(limits[0]), int(limits[1]))
 
 if crop_name == '':
     crop_name = 'Unknown Plant'
