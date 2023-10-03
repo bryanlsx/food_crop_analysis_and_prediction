@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 
@@ -28,3 +27,7 @@ st.write(f"Production efficiency for ({selected_crop}) : {prod_efficiency[prod_c
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
 emission = {0: 'High GHG level Emission', 1: 'Moderate level GHG Emission', 2: 'Low level GHG Emission'}
 st.write(f"GHG emission level for ({selected_crop}) : {emission[wl_cluster]}")
+
+st.image("cluster_img_food_sec.png", caption="Cluster for Food Security", use_column_width=True)
+st.image("cluster_img_food_wl.png", caption="Cluster for Food Waste & Loss", use_column_width=True)
+st.image("performance_measure.png", caption="Performance Measure of Attempted Models", use_column_width=True)
