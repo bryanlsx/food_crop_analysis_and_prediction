@@ -36,8 +36,7 @@ def food_security_prediction(user_input):
     scaled_data = scaler.fit_transform(df_temp[['Area harvested', 'Production']])
     prediction = birch.predict(scaled_data)
     cluster = prediction[-1]  # taking the prediction for the last row which is our input
-    efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent production efficiency'}
-    return f"a predicted <u>**{efficiency[cluster]}**</u>"
+    return cluster
 
 def food_waste_prediction(user_input, crop_name):
     df_temp = fwl_transformed.copy()
@@ -48,18 +47,24 @@ def food_waste_prediction(user_input, crop_name):
     transformed_data = pca.fit_transform(scaled_data)
     prediction = birch_fwl.predict(transformed_data)
     cluster = prediction[-1]  # taking the prediction for the last row which is our input
-    emission = {0: 'high GHG Emission level', 1: 'moderate Level GHG Emission level', 2: 'low Level GHG Emission level'}
-    
-    # Add cluster class to the dataframe
-    df_temp['Cluster_Class'] = prediction
-    cluster_class = df_temp[df_temp['Item'] == crop_name]['Cluster_Class'].values[0]
+    return cluster
 
-    return f"a predicted **<u>{emission[cluster_class]}</u>**"
-# Min-max values for sliders
-slider_limits = {
-    column: (fwl_transformed[column].min(), fwl_transformed[column].max())
-    for column in ['Feed', 'Import Quantity', 'Loss', 'Other uses (non-food)', 'Processed', 'Residuals', 'Stock Variation']
-}
+# Color-coding functions
+def get_color_pe(cluster_num):
+    if cluster_num == 0:
+        return '#2ECC71'  # green
+    elif cluster_num == 1:
+        return '#E74C3C'  # red
+    else:
+        return '#F39C12'  # yellow
+
+def get_color_fwl(cluster_num):
+    if cluster_num == 0:
+        return '#E74C3C'  # red
+    elif cluster_num == 1:
+        return '#2ECC71'  # green
+    else:
+        return '#F39C12'  # yellow
 
 # Streamlit UI
 st.title('Custom Crop Prediction')
@@ -88,7 +93,28 @@ for col, limits in slider_limits.items():
 
 # Button to Predict for Custom Crop
 if st.button('See how your crop performs!'):
-    fs_result = food_security_prediction(user_input_fs)
-    fwl_result = food_waste_prediction(user_input_fwl, crop_name)
-    result = f"{crop_name} has {fs_result} and {fwl_result}"
-    st.markdown(result, unsafe_allow_html=True)
+    fs_cluster = food_security_prediction(user_input_fs)
+    fwl_cluster = food_waste_prediction(user_input_fwl, crop_name)
+    efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent production efficiency'}
+    emission = {0: 'High GHG Emission level', 1: 'Low Level GHG Emission level', 2: 'Moderate Level GHG Emission level'}
+    
+    st.markdown(f"""
+    <style>
+        .info-card {{
+            padding: 10px 20px;
+            margin: 10px 0px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }}
+    </style>
+
+    <div class="info-card" style="background-color: {get_color_pe(fs_cluster)};">
+        <h4>Production Efficiency for {crop_name}</h4>
+        <p>{efficiency[fs_cluster]}</p>
+    </div>
+
+    <div class="info-card" style="background-color: {get_color_fwl(fwl_cluster)};">
+        <h4>GHG Emission Level for {crop_name}</h4>
+        <p>{emission[fwl_cluster]}</p>
+    </div>
+    """, unsafe_allow_html=True)
