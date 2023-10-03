@@ -29,6 +29,6 @@ prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficienc
 st.write(f"Production efficiency for <{selected_crop}> : {prod_efficiency[prod_cluster]}")
 
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
-emission = {0: 'Moderate GHG level Emission', 1: 'High level GHG Emission', 2: 'Low level GHG Emission'}
+emission = {0: 'High GHG level Emission', 1: 'Low level GHG Emission', 2: 'Moderate GHG level Emission'}
 st.write(f"GHG emission level for <{selected_crop}> : {emission[wl_cluster]}")
 
