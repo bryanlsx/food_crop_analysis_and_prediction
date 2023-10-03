@@ -65,6 +65,7 @@ slider_limits = {
 st.title('Custom Crop Prediction')
 
 # Custom Crop Name
+st.subheader('Enter your Crop\'s Name')
 crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, Wheat...')
 
 # Food Security Sliders
