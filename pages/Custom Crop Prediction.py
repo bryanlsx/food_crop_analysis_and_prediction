@@ -67,26 +67,11 @@ st.title('Custom Crop Prediction')
 # Custom Crop Name
 crop_name = st.text_input('Enter a Custom Crop Name', placeholder='e.g. Apple, Wheat...')
 
-# # Food Security Sliders
-# st.subheader('Food Production Parameters')
-# user_input_fs = {
-#     'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min()), int(df_prod_copy['Area harvested'].max())),
-#     'Production': st.slider('Production', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
-# }
-
-# # Food Waste/Loss Sliders
-# st.subheader('Food Waste/Loss Parameters')
-# user_input_fwl = {
-#     'Item': crop_name,
-#     'Export Quantity': 0,
-#     'Production': 0
-# }
-
 # Food Security Sliders
 st.subheader('Food Production Parameters')
 user_input_fs = {
-    'Area harvested': st.slider('Area harvested', "min", "max"),
-    'Production': st.slider('Production', "min", "max")
+    'Area harvested': st.slider('Area harvested', int(df_prod_copy['Area harvested'].min()), int(df_prod_copy['Area harvested'].max())),
+    'Production': st.slider('Production', int(df_prod_copy['Production'].min()), int(df_prod_copy['Production'].max()))
 }
 
 # Food Waste/Loss Sliders
