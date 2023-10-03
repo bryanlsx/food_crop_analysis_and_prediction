@@ -15,8 +15,10 @@ clusters_list_birch_foodwl = df_birch_wl_birch[['Item', 'Cluster_Class']].sort_v
 
 st.title('Crop Analysis Overview')
 st.header('Results from our Analysis')
-st.image("cluster_results.png", caption="Result of Clustering", use_column_width=True)
+st.image("cluster_results_fp.png", caption="Result of Clustering on FP Dataset", use_column_width=True)
+st.image("cluster_results_fwl.png", caption="Result of Clustering on FWL Dataset", use_column_width=True)
 
+#Recap on last shown dataset on FWL Dataset to further explain 
 st.subheader('Recap on FWL Dataset')
 main_df = pd.read_csv("fwl_transformed.csv")
 st.dataframe(main_df)
