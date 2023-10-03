@@ -32,24 +32,27 @@ prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficienc
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
 emission = {0: 'High GHG level Emission', 1: 'Low level GHG Emission', 2: 'Moderate GHG level Emission'}
 # st.write(f"GHG emission level for <{selected_crop}> : {emission[wl_cluster]}")
-import streamlit as st
 
 # Define a function to get color based on the efficiency or emission level
-def get_color_pe(prod_efficiency):
-    if '0' in prod_efficiency:
+def get_color_pe(cluster_num):
+    if cluster_num == 0:
         return '#2ECC71'  # green
-    elif '1' in prod_efficiency:
+    elif cluster_num == 1:
         return '#E74C3C'  # red
     else:
         return '#F39C12'  # yellow
-    
-def get_color_fwl(emission):
-    if '0' in emission:
+
+def get_color_fwl(cluster_num):
+    if cluster_num == 0:
         return '#E74C3C'  # red
-    elif '1' in emission:
+    elif cluster_num == 1:
         return '#2ECC71'  # green
     else:
         return '#F39C12'  # yellow
+
+# Retrieve the production efficiency and GHG emission level descriptions
+prod_val = prod_efficiency[prod_cluster]
+emission_val = emission[wl_cluster]
 
 # Display the information using cards with color coding
 st.markdown(f"""
@@ -62,14 +65,14 @@ st.markdown(f"""
     }}
 </style>
 
-<div class="info-card" style="background-color: {get_color_pe(prod_efficiency)};">
+<div class="info-card" style="background-color: {get_color_pe(prod_cluster)};">
     <h4>Production Efficiency for {selected_crop}</h4>
-    <p>{prod_efficiency}</p>
+    <p>{prod_val}</p>
 </div>
 
-<div class="info-card" style="background-color: {get_color_fwl(emission)};">
+<div class="info-card" style="background-color: {get_color_fwl(wl_cluster)};">
     <h4>GHG Emission Level for {selected_crop}</h4>
-    <p>{emission}</p>
+    <p>{emission_val}</p>
 </div>
 """, unsafe_allow_html=True)
 
