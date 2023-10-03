@@ -54,8 +54,8 @@ def get_color_fwl(val):
         return '#F39C12'  # yellow
 
 # Retrieve the production efficiency and GHG emission level
-prod_val = prod_efficiency[prod_cluster]
-emission_val = emission[wl_cluster]
+prod_val = str(prod_efficiency[prod_cluster])
+emission_val = str(emission[wl_cluster])
 
 # Display the information using cards with color coding
 st.markdown(f"""
