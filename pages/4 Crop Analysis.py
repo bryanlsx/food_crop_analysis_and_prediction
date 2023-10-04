@@ -34,6 +34,8 @@ prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficienc
 
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
 emission = {0: 'High GHG level Emission', 1: 'Low level GHG Emission', 2: 'Moderate GHG level Emission'}
+utilisation = {0: 'Medium Utilisation', 1: 'High utilisation', 2: 'Low utilisation'}
+
 
 
 # Define function to get color based on the efficiency or emission level
@@ -52,10 +54,19 @@ def get_color_fwl(cluster_num):
         return '#2ECC71'  # green
     else:
         return '#F39C12'  # yellow
+    
+def get_color_util(cluster_num):
+    if cluster_num == 0:
+        return '#F39C12'  # yellow
+    elif cluster_num == 1:
+        return '#E74C3C'  # red
+    else:
+        return '#2ECC71'  # green
 
 # Retrieve the production efficiency and GHG emission level descriptions
 prod_val = prod_efficiency[prod_cluster]
 emission_val = emission[wl_cluster]
+util_val = utilisation[wl_cluster]
 
 # Display the information using cards with color coding
 st.markdown(f"""
@@ -76,6 +87,11 @@ st.markdown(f"""
 <div class="info-card" style="background-color: {get_color_fwl(wl_cluster)};">
     <h4>GHG Emission Level for {selected_crop}</h4>
     <p>{emission_val}</p>
+</div>
+
+<div class="info-card" style="background-color: {get_color_util(wl_cluster)};">
+    <h4>GHG Emission Level for {selected_crop}</h4>
+    <p>{util_val}</p>
 </div>
 """, unsafe_allow_html=True)
 
