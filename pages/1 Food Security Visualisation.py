@@ -12,7 +12,7 @@ st.title('Data Visualization')
 
 st.header('Crop Analysis')
 
-main_df = pd.read_csv("df_prod_copy.csv")
+main_df = pd.read_csv("df_fs.csv")
 st.dataframe(main_df)
 
 df_MlsAreaCrop = pd.read_csv('df_MlsAreaCrop.csv')
@@ -110,3 +110,7 @@ fig.update_layout(coloraxis_colorbar=dict(tickvals=list(color_map.keys()),
 
 # Display the figure in Streamlit
 st.plotly_chart(fig)
+
+#========================================================================#
+main_df = pd.read_csv("df_prod_copy.csv")
+st.dataframe(main_df)

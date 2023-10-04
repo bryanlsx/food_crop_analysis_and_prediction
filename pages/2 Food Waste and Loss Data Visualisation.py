@@ -71,3 +71,7 @@ fig = ff.create_2d_density(
     )
 fig.update_layout(title='2D Density Plot of Feed vs Loss')
 st.plotly_chart(fig)
+
+
+# ========================================================================
+st.image("cluster_results_fwl.png", caption="Result of Clustering on FWL Dataset", use_column_width=True)

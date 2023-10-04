@@ -100,6 +100,8 @@ st.markdown(f"""
 selected_crop_data_fs = df_prod_copy[df_prod_copy['Item'] == selected_crop]
 selected_crop_data_fwl = df_birch_wl_birch[df_birch_wl_birch['Item'] == selected_crop]
 st.subheader(f'Data for {selected_crop}')
-st.dataframe(selected_crop_data_fs, caption="Food Production Clustered Dataset")
-st.dataframe(selected_crop_data_fwl, caption="FWL Clustered Dataset")
-
+st.dataframe(selected_crop_data_fs)
+st.write("Food Production Clustered Dataset")
+st.write("")
+st.dataframe(selected_crop_data_fwl)
+st.write("FWL Clustered Dataset")
