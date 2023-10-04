@@ -58,9 +58,9 @@ def get_color_fwl(cluster_num):
     
 def get_color_util(cluster_num):
     if cluster_num == 0:
-        return '#E74C3C'  # red
+        return '#F39C12'  # red
     elif cluster_num == 1:
-        return '#F39C12'  # yellow
+        return '#E74C3C'  # yellow
     else:
         return '#2ECC71'  # green
 
