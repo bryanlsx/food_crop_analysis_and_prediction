@@ -33,7 +33,7 @@ prod_cluster = clusters_list_birch_foodprod[clusters_list_birch_foodprod['Item']
 prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent Production Efficiency'}
 
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
-emission = {0: 'Low GHG level Emissions', 1: 'High level GHG Emission', 2: 'Moderate GHG level Emission'}
+emission = {0: 'Low GHG level Emission', 1: 'High level GHG Emission', 2: 'Moderate GHG level Emission'}
 utilisation = {0: 'Medium Utilisation', 1: 'High utilisation', 2: 'Low utilisation'}
 
 
