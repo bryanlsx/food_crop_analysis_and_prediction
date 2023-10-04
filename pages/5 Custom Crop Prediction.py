@@ -138,7 +138,7 @@ if st.button('See how your crop performs!'):
     </div>
 
     <div class="info-card" style="background-color: {get_color_util(fwl_cluster)};">
-    <h4>GHG Emission Level for {crop_name}</h4>
-    <p>{utilisation[fwl_cluster]}</p>
-</div>
+        <h4>GHG Emission Level for {crop_name}</h4>
+        <p>{utilisation[fwl_cluster]}</p>
+    </div>
     """, unsafe_allow_html=True)
