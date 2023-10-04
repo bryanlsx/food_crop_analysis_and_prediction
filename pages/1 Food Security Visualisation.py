@@ -112,5 +112,6 @@ fig.update_layout(coloraxis_colorbar=dict(tickvals=list(color_map.keys()),
 st.plotly_chart(fig)
 
 #========================================================================#
+st.subheader('Result of Clustered FP Dataset')
 main_df = pd.read_csv("df_prod_copy.csv")
 st.dataframe(main_df)
