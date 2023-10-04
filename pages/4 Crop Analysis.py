@@ -33,8 +33,8 @@ prod_cluster = clusters_list_birch_foodprod[clusters_list_birch_foodprod['Item']
 prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent Production Efficiency'}
 
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
-emission = {0: 'Low GHG level Emission', 1: 'High level GHG Emission', 2: 'Moderate GHG level Emission'}
-utilisation = {0: 'Medium Utilisation', 1: 'High utilisation', 2: 'Low utilisation'}
+emission = {0: 'High GHG level Emission', 1: 'Low level GHG Emission', 2: 'Moderate GHG level Emission'}
+utilisation = {0: 'High Utilisation', 1: 'Moderate utilisation', 2: 'Low utilisation'}
 
 
 
@@ -49,17 +49,17 @@ def get_color_pe(cluster_num):
 
 def get_color_fwl(cluster_num):
     if cluster_num == 0:
-        return '#2ECC71'  # green
+        return '#E74C3C'  # red
     elif cluster_num == 1: 
-        return '#E74C3C'  # red 
+         return '#2ECC71'  # green
     else:
         return '#F39C12'  # yellow
     
 def get_color_util(cluster_num):
     if cluster_num == 0:
-        return '#F39C12'  # yellow
-    elif cluster_num == 1:
         return '#E74C3C'  # red
+    elif cluster_num == 1:
+        return '#F39C12'  # yellow
     else:
         return '#2ECC71'  # green
 
