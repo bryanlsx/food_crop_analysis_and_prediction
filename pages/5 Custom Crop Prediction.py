@@ -60,11 +60,11 @@ def get_color_pe(cluster_num):
 
 def get_color_fwl(cluster_num):
     if cluster_num == 0:
-        return '#2ECC71'  # yellow 
+        return '#F39C12'  # yellow 
     elif cluster_num == 1: 
         return '#E74C3C'  # red        
     else:
-        return '#F39C12'  # green
+        return '#2ECC71'  # green
         
     
 def get_color_util(cluster_num):
@@ -114,7 +114,7 @@ if st.button('See how your crop performs!'):
     fs_cluster = food_security_prediction(user_input_fs)
     fwl_cluster = food_waste_prediction(user_input_fwl, crop_name)
     efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent production efficiency'}
-    emission = {0: 'High GHG Emission level', 1: 'Low Level GHG Emission level', 2: 'Moderate Level GHG Emission level'}
+    emission = {0: 'Moderate GHG Emission level', 1: 'High Level GHG Emission level', 2: 'Low Level GHG Emission level'}
     utilisation = {0: 'Moderate Utilisation', 1: 'High utilisation', 2: 'Low utilisation'}
 
     st.markdown(f"""
