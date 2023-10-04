@@ -60,11 +60,20 @@ def get_color_pe(cluster_num):
 
 def get_color_fwl(cluster_num):
     if cluster_num == 0:
-        return '#E74C3C'  # red
-    elif cluster_num == 1:
-        return '#2ECC71'  # green
+        return '#F39C12'  # yellow 
+    elif cluster_num == 1: 
+        return '#E74C3C'  # red        
     else:
-        return '#F39C12'  # yellow
+        return '#2ECC71'  # green
+        
+    
+def get_color_util(cluster_num):
+    if cluster_num == 0:
+        return '#F39C12'  # red
+    elif cluster_num == 1:
+        return '#E74C3C'  # yellow
+    else:
+        return '#2ECC71'  # green
     
 # Min-max values for sliders
 slider_limits = {
@@ -106,7 +115,8 @@ if st.button('See how your crop performs!'):
     fwl_cluster = food_waste_prediction(user_input_fwl, crop_name)
     efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent production efficiency'}
     emission = {0: 'High GHG Emission level', 1: 'Low Level GHG Emission level', 2: 'Moderate Level GHG Emission level'}
-    
+    utilisation = {0: 'Moderate Utilisation', 1: 'High utilisation', 2: 'Low utilisation'}
+
     st.markdown(f"""
     <style>
         .info-card {{
@@ -126,4 +136,9 @@ if st.button('See how your crop performs!'):
         <h4>GHG Emission Level for {crop_name}</h4>
         <p>{emission[fwl_cluster]}</p>
     </div>
+
+    <div class="info-card" style="background-color: {get_color_util(fwl_cluster)};">
+    <h4>GHG Emission Level for {crop_name}</h4>
+    <p>{utilisation[fwl_cluster]}</p>
+</div>
     """, unsafe_allow_html=True)
