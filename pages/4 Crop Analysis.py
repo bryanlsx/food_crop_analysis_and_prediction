@@ -7,7 +7,7 @@ def load_data(filename):
 
 # Load csv datasets
 df_prod_copy = load_data('df_prod_copy.csv')
-df_birch_wl_birch = load_data('cluster_list_wl_birch.csv')
+df_birch_wl_birch = load_data('cluster_list_wl.csv')
 fwl_transformed = load_data('fwl_transformed.csv')
 
 clusters_list_birch_foodprod = df_prod_copy[['Item', 'Cluster_Class']].sort_values(by='Cluster_Class').reset_index(drop=True)
