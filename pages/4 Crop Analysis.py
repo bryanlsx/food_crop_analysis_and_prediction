@@ -34,7 +34,9 @@ prod_efficiency = {0: 'High production efficiency', 1: 'Low production efficienc
 
 wl_cluster = clusters_list_birch_foodwl[clusters_list_birch_foodwl['Item'] == selected_crop]['Cluster_Class'].values[0]
 emission = {0: 'Moderate GHG level Emission', 1: 'High level GHG Emission', 2: 'Low GHG level Emission'}
-utilisation = {0: 'Moderate Utilisation', 1: 'High utilisation', 2: 'Low utilisation'}
+utilisation = {0: '1. Feed \n 2. Import Quantity \n3. Loss \n4. Other Uses \n5. Processed', 
+               1: '1. Feed \n 2. Import Quantity \n3. Loss \n4. Processed \n5. Stock Variation', 
+               2: '2. Loss \n2. Processed \n3. Stock Variation'}
 
 
 
@@ -91,7 +93,7 @@ st.markdown(f"""
 </div>
 
 <div class="info-card" style="background-color: {get_color_util(wl_cluster)};">
-    <h4>GHG Emission Level for {selected_crop}</h4>
+    <h4>Utilisation for {selected_crop}</h4>
     <p>{util_val}</p>
 </div>
 """, unsafe_allow_html=True)
