@@ -9,7 +9,7 @@ st.set_page_config(page_title="GHG Emission", page_icon="🐨")
 # Streamlit UI
 st.title('Data Visualization')
 
-st.header('GHG Emission Analysis')
+st.header('GHG Emission Data Visualisations')
 
 
 data = pd.read_csv('Malaysia_GHG_Emission.csv',encoding='ISO-8859-1')

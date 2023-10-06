@@ -115,7 +115,9 @@ if st.button('See how your crop performs!'):
     fwl_cluster = food_waste_prediction(user_input_fwl, crop_name)
     efficiency = {0: 'High production efficiency', 1: 'Low production efficiency', 2: 'Consistent production efficiency'}
     emission = {0: 'Moderate GHG Emission level', 1: 'High Level GHG Emission level', 2: 'Low Level GHG Emission level'}
-    utilisation = {0: 'Moderate Utilisation', 1: 'High utilisation', 2: 'Low utilisation'}
+    utilisation = {0: '(1. Feed) (2. Import Quantity) (3. Loss) (4. Other Uses) (5. Processed)', 
+               1: '(1. Feed) (2. Import Quantity) (3. Loss) (4. Processed) (5. Stock Variation)', 
+               2: '(1. Loss) (2. Processed) (3. Stock Variation)'}
 
     st.markdown(f"""
     <style>
@@ -138,7 +140,7 @@ if st.button('See how your crop performs!'):
     </div>
 
     <div class="info-card" style="background-color: {get_color_util(fwl_cluster)};">
-        <h4>GHG Emission Level for {crop_name}</h4>
+        <h4>Utilisation for {crop_name}</h4>
         <p>{utilisation[fwl_cluster]}</p>
     </div>
     """, unsafe_allow_html=True)
