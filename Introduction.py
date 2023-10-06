@@ -24,6 +24,19 @@ def cleaned_process (df):
 
 ghg_data = cleaned_process(data)
 
+# ==============================Total GHG Emissions Over the Years===========================================
+total_emissions_per_year = ghg_data.groupby('Year')['Value'].sum()
+
+
+fig = px.line(total_emissions_per_year, x=total_emissions_per_year.index, y=total_emissions_per_year.values, 
+              title='Total GHG Emissions Over the Years',
+              labels={'y': 'Emissions (kt)', 'index': 'Year'})
+
+
+st.plotly_chart(fig)
+
+st.divider()
+
 # ==============================Total GHG Emissions by Source for latest year===========================================
 latest_year = ghg_data['Year'].max()
 emissions_by_source = ghg_data[ghg_data['Year'] == latest_year].groupby('Item')['Value'].sum().sort_values(ascending=False)
