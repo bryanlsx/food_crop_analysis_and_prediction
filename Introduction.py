@@ -22,7 +22,7 @@ def cleaned_process (df):
 
 ghg_data = cleaned_process(data)
 
-st.image("pg2.png", use_column_width=True)
+
 
 # ==============================Total GHG Emissions Over the Years===========================================
 st.header('GHG Emission Pattern Across the Years')
@@ -37,6 +37,8 @@ fig = px.line(total_emissions_per_year, x=total_emissions_per_year.index, y=tota
 st.plotly_chart(fig)
 
 st.divider()
+
+st.image("pg2.png", use_column_width=True)
 
 # ==============================Total GHG Emissions by Source for latest year===========================================
 st.header('Source of GHG Emissions Year 2020')
