@@ -6,11 +6,9 @@ import plotly.express as px
 
 st.title('Introduction')
 st.image("pg1.png", use_column_width=True)
-st.image("pg2.png", use_column_width=True)
+
 
 # ========Visualise Part===============
-st.header('GHG Emission Data Visualisations')
-
 data = pd.read_csv('Malaysia_GHG_Emission.csv',encoding='ISO-8859-1')
 
 def cleaned_process (df):
@@ -23,6 +21,8 @@ def cleaned_process (df):
     return clean
 
 ghg_data = cleaned_process(data)
+
+st.image("pg2.png", use_column_width=True)
 
 # ==============================Total GHG Emissions Over the Years===========================================
 st.header('GHG Emission Pattern Across the Years')
