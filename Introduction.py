@@ -54,22 +54,8 @@ st.plotly_chart(fig)
 
 st.divider()
 
-# ==============================Proportion of GHG Emissions by Element for latest year==============================
-
-st.header('GHG Emission Caused by Elements Year 2020')
-emissions_by_element = ghg_data[ghg_data['Year'] == latest_year].groupby('Element')['Value'].sum().sort_values(ascending=False)
-
-# Creating an interactive pie chart using Plotly
-fig = px.pie(emissions_by_element, 
-             values=emissions_by_element.values, 
-             names=emissions_by_element.index,
-             title=f'Proportion of GHG Emissions by Element for {latest_year}')
-
-# Displaying the plot on Streamlit
-st.plotly_chart(fig)
 # =======================================
 st.image("pg3.png", use_column_width=True)
 st.image("pg4.png", use_column_width=True)
 st.image("pg5.png", use_column_width=True)
 st.image("pg6.png", use_column_width=True)
-st.image("pg7.png", use_column_width=True)
