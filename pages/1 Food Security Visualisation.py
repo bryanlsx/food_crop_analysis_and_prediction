@@ -112,6 +112,6 @@ fig.update_layout(coloraxis_colorbar=dict(tickvals=list(color_map.keys()),
 st.plotly_chart(fig)
 
 #========================================================================#
-st.subheader('Transformend Dataset')
+st.subheader('Transformed Dataset')
 main_df = pd.read_csv("df_fs.csv")
 st.dataframe(main_df)
