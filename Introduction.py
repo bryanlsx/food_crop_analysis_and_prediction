@@ -13,6 +13,17 @@ st.header('GHG Emission Data Visualisations')
 
 data = pd.read_csv('Malaysia_GHG_Emission.csv',encoding='ISO-8859-1')
 
+def cleaned_process (df):
+    # 1. Drop Redundant Columns
+    clean = df.drop(columns=['ï»¿Domain Code','Area Code (M49)', 'Element Code', 'Item Code', 'Year Code'])
+
+    # Drop the 'Note' column
+    clean = clean.drop(columns=['Note'])
+
+    return clean
+
+ghg_data = cleaned_process(data)
+
 # ==============================Total GHG Emissions by Source for latest year===========================================
 latest_year = ghg_data['Year'].max()
 emissions_by_source = ghg_data[ghg_data['Year'] == latest_year].groupby('Item')['Value'].sum().sort_values(ascending=False)
