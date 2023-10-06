@@ -15,6 +15,7 @@ clusters_list_birch_foodwl = df_birch_wl_birch[['Item', 'Cluster_Class']].sort_v
 
 st.title('Crop Analysis Overview')
 st.header('Results from our Analysis')
+st.image("crop_ana1.png", use_column_width=True)
 st.image("cluster_results_fp.png", caption="Result of Clustering on FP Dataset", use_column_width=True)
 st.image("cluster_results_fwl.png", caption="Result of Clustering on FWL Dataset", use_column_width=True)
 
