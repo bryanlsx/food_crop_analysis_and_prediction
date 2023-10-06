@@ -18,6 +18,64 @@ st.dataframe(fwl_transformed)
 
 st.title("Interactive Plot for analysis")
 
+# ==============================Pairplot of Area Harvested and Production==============================
+# Create a subplot with 1 row and 2 columns
+fig = make_subplots(rows=3, cols=3)
+
+# Add density plot for 'Total_Area' to the first column
+fig.add_trace(
+    go.Histogram(x=fwl_transformed['Feed'], histnorm='probability density', name='Feed'),
+    row=1, col=1
+)
+
+# Add density plot for 'Total_Prod' to the second column
+fig.add_trace(
+    go.Histogram(x=fwl_transformed['Import Quantity'], histnorm='probability density', name='Import Quantity'),
+    row=1, col=2
+)
+
+fig.add_trace(
+    go.Histogram(x=fwl_transformed['Loss'], histnorm='probability density', name='Loss'),
+    row=1, col=3
+)
+
+fig.add_trace(
+    go.Histogram(x=fwl_transformed['Other uses (non-food)'], histnorm='probability density', name='Other uses (non-food)'),
+    row=2, col=1
+)
+
+fig.add_trace(
+    go.Histogram(x=fwl_transformed['Processed'], histnorm='probability density', name='Processed'),
+    row=2, col=2
+)
+
+fig.add_trace(
+    go.Histogram(x=fwl_transformed['Residuals'], histnorm='probability density', name='Residuals'),
+    row=2, col=3
+)
+
+fig.add_trace(
+    go.Histogram(x=fwl_transformed['Stock Variation'], histnorm='probability density', name='Stock Variation'),
+    row=3, col=1
+)
+
+# Update the layout
+fig.update_layout(
+    title_text="Density Plots of Area Harvested and Production (Pre-Clustering)",
+    bargap=0.01
+)
+
+# Update x-axis titles
+fig.update_xaxes(title_text="Feed", row=1, col=1)
+fig.update_xaxes(title_text="Import Quantity", row=1, col=2)
+fig.update_xaxes(title_text="Loss", row=1, col=3)
+fig.update_xaxes(title_text="Other uses (non-food)", row=2, col=1)
+fig.update_xaxes(title_text="Processed", row=2, col=2)
+fig.update_xaxes(title_text="Residuals", row=2, col=3)
+fig.update_xaxes(title_text="Stock Variation", row=3, col=1)
+
+st.plotly_chart(fig)
+
 # ==============================Top 10 Items with Highest Total Loss===========================================
 top_loss_items = fwl_transformed.groupby('Item')['Loss'].sum().sort_values(ascending=False).head(10)
 
