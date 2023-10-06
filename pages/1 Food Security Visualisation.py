@@ -19,6 +19,33 @@ df_MlsAreaCrop = pd.read_csv('df_MlsAreaCrop.csv')
 df_MlsMerge = pd.read_csv('df_MlsMerge.csv')
 df_MlsProd = pd.read_csv('df_MlsProd.csv')
 
+# ==============================Pairplot of Area Harvested and Production==============================
+# Create a subplot with 1 row and 2 columns
+fig = make_subplots(rows=1, cols=2)
+
+# Add density plot for 'Total_Area' to the first column
+fig.add_trace(
+    go.Histogram(x=df_MlsMerge['Total_Area'], histnorm='probability density', name='Area Harvested'),
+    row=1, col=1
+)
+
+# Add density plot for 'Total_Prod' to the second column
+fig.add_trace(
+    go.Histogram(x=df_MlsMerge['Total_Prod'], histnorm='probability density', name='Production'),
+    row=1, col=2
+)
+
+# Update the layout
+fig.update_layout(
+    title_text="Density Plots of Area Harvested and Production (Pre-Clustering)",
+    bargap=0.01
+)
+
+# Update x-axis titles
+fig.update_xaxes(title_text="Area Harvested", row=1, col=1)
+fig.update_xaxes(title_text="Production", row=1, col=2)
+
+st.plotly_chart(fig)
 
 # ==============================Top 10 Crops by Total Area Harvested in Malaysia==============================
 fig = px.bar(df_MlsAreaCrop.head(10), 
@@ -48,33 +75,7 @@ st.plotly_chart(fig)
 st.divider()
 
 
-# ==============================Pairplot of Area Harvested and Production==============================
-# Create a subplot with 1 row and 2 columns
-fig = make_subplots(rows=1, cols=2)
 
-# Add density plot for 'Total_Area' to the first column
-fig.add_trace(
-    go.Histogram(x=df_MlsMerge['Total_Area'], histnorm='probability density', name='Area Harvested'),
-    row=1, col=1
-)
-
-# Add density plot for 'Total_Prod' to the second column
-fig.add_trace(
-    go.Histogram(x=df_MlsMerge['Total_Prod'], histnorm='probability density', name='Production'),
-    row=1, col=2
-)
-
-# Update the layout
-fig.update_layout(
-    title_text="Density Plots of Area Harvested and Production (Pre-Clustering)",
-    bargap=0.01
-)
-
-# Update x-axis titles
-fig.update_xaxes(title_text="Area Harvested", row=1, col=1)
-fig.update_xaxes(title_text="Production", row=1, col=2)
-
-st.plotly_chart(fig)
 
 
 
