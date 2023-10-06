@@ -180,6 +180,8 @@ fig.update_layout(title='Correlation Heatmap')
 st.plotly_chart(fig)
 st.divider()
 
+st.image("fwl.png", use_column_width=True)
+
 # # ==============================Top 10 Items with Highest Total Loss===========================================
 # top_loss_items = fwl_transformed.groupby('Item')['Loss'].sum().sort_values(ascending=False).head(10)
 
