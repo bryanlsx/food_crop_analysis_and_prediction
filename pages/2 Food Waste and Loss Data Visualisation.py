@@ -175,7 +175,7 @@ fig = ff.create_annotated_heatmap(
 )
 
 fig.update_layout(title='Correlation Heatmap')
-
+st.image("fwl_desc.png", use_column_width=True)
 st.plotly_chart(fig)
 st.divider()
 
