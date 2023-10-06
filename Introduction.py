@@ -38,7 +38,7 @@ st.plotly_chart(fig)
 
 st.divider()
 
-st.image("pg2.png", use_column_width=True)
+
 
 # ==============================Total GHG Emissions by Source for latest year===========================================
 st.header('Source of GHG Emissions Year 2020')
@@ -55,7 +55,7 @@ fig.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig)
 
 st.divider()
-
+st.image("pg2.png", use_column_width=True)
 # =======================================
 st.image("pg3.png", use_column_width=True)
 st.image("pg4.png", use_column_width=True)
