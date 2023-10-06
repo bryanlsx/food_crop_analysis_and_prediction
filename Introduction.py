@@ -25,6 +25,7 @@ def cleaned_process (df):
 ghg_data = cleaned_process(data)
 
 # ==============================Total GHG Emissions Over the Years===========================================
+st.header('GHG Emission Pattern Across the Years')
 total_emissions_per_year = ghg_data.groupby('Year')['Value'].sum()
 
 
@@ -38,6 +39,7 @@ st.plotly_chart(fig)
 st.divider()
 
 # ==============================Total GHG Emissions by Source for latest year===========================================
+st.header('Source of GHG Emissions Year 2020')
 latest_year = ghg_data['Year'].max()
 emissions_by_source = ghg_data[ghg_data['Year'] == latest_year].groupby('Item')['Value'].sum().sort_values(ascending=False)
 
@@ -53,6 +55,8 @@ st.plotly_chart(fig)
 st.divider()
 
 # ==============================Proportion of GHG Emissions by Element for latest year==============================
+
+st.header('GHG Emission Caused by Elements Year 2020')
 emissions_by_element = ghg_data[ghg_data['Year'] == latest_year].groupby('Element')['Value'].sum().sort_values(ascending=False)
 
 # Creating an interactive pie chart using Plotly
