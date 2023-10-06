@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import plotly.figure_factory as ff
 import plotly.express as px
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+from plotly.subplots import make_subplots   
 
 
 st.set_page_config(page_title="Food Waste & Loss", page_icon="🐨")
@@ -78,30 +78,6 @@ fig.update_xaxes(title_text="Stock Variation", row=3, col=1)
 
 st.plotly_chart(fig)
 
-# ==============================Top 10 Items with Highest Total Loss===========================================
-top_loss_items = fwl_transformed.groupby('Item')['Loss'].sum().sort_values(ascending=False).head(10)
-
-fig = px.bar(top_loss_items, x=top_loss_items.index, y=top_loss_items.values, 
-                labels={'y': 'Total Loss', 'index': 'Item'}, 
-                title='Top 10 Items with Highest Total Loss',
-                color=top_loss_items.values, color_continuous_scale='viridis')
-
-st.plotly_chart(fig)
-
-
-st.divider()
-
-# ==============================Top 10 Items Contributing to Feed===========================================
-top_feed_items = fwl_transformed.groupby('Item')['Feed'].sum().sort_values(ascending=False).head(10)
-
-fig = px.bar(top_feed_items, x=top_feed_items.index, y=top_feed_items.values, 
-                labels={'y': 'Total Loss', 'index': 'Item'}, 
-                title='Top 10 Items Contributing to Feed',
-                color=top_loss_items.values, color_continuous_scale='magma')
-
-st.plotly_chart(fig)
-st.divider()
-
 # ==============================Heatmap===========================================
 cols_of_interest = ['Feed', 'Import Quantity', 'Loss', 'Other uses (non-food)', 'Processed', 'Residuals', 'Stock Variation']
 correlation_matrix = fwl_transformed[cols_of_interest].corr()
@@ -121,17 +97,43 @@ fig.update_layout(title='Correlation Heatmap')
 st.plotly_chart(fig)
 st.divider()
 
-# ==============================Heatmap===========================================
-# Using Plotly to create the 2D Density Plot
+# # ==============================Top 10 Items with Highest Total Loss===========================================
+# top_loss_items = fwl_transformed.groupby('Item')['Loss'].sum().sort_values(ascending=False).head(10)
 
-# Create the 2D density plot using plotly.figure_factory
-fig = ff.create_2d_density(
-        x=fwl_transformed['Feed'], 
-        y=fwl_transformed['Loss'], 
-    )
-fig.update_layout(title='2D Density Plot of Feed vs Loss')
-st.plotly_chart(fig)
+# fig = px.bar(top_loss_items, x=top_loss_items.index, y=top_loss_items.values, 
+#                 labels={'y': 'Total Loss', 'index': 'Item'}, 
+#                 title='Top 10 Items with Highest Total Loss',
+#                 color=top_loss_items.values, color_continuous_scale='viridis')
+
+# st.plotly_chart(fig)
+
+
+# st.divider()
+
+# # ==============================Top 10 Items Contributing to Feed===========================================
+# top_feed_items = fwl_transformed.groupby('Item')['Feed'].sum().sort_values(ascending=False).head(10)
+
+# fig = px.bar(top_feed_items, x=top_feed_items.index, y=top_feed_items.values, 
+#                 labels={'y': 'Total Loss', 'index': 'Item'}, 
+#                 title='Top 10 Items Contributing to Feed',
+#                 color=top_loss_items.values, color_continuous_scale='magma')
+
+# st.plotly_chart(fig)
+# st.divider()
+
+
+
+# # ==============================Heatmap===========================================
+# # Using Plotly to create the 2D Density Plot
+
+# # Create the 2D density plot using plotly.figure_factory
+# fig = ff.create_2d_density(
+#         x=fwl_transformed['Feed'], 
+#         y=fwl_transformed['Loss'], 
+#     )
+# fig.update_layout(title='2D Density Plot of Feed vs Loss')
+# st.plotly_chart(fig)
 
 
 # ========================================================================
-st.image("cluster_results_fwl.png", caption="Result of Clustering on FWL Dataset", use_column_width=True)
+# st.image("cluster_results_fwl.png", caption="Result of Clustering on FWL Dataset", use_column_width=True)
