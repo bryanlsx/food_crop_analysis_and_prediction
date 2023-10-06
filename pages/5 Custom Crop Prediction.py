@@ -69,9 +69,9 @@ def get_color_fwl(cluster_num):
     
 def get_color_util(cluster_num):
     if cluster_num == 0:
-        return '#F39C12'  # red
+        return '#2ECC71'  # red
     elif cluster_num == 1:
-        return '#E74C3C'  # yellow
+        return '#2ECC71'  # yellow
     else:
         return '#2ECC71'  # green
     
@@ -139,4 +139,8 @@ if st.button('See how your crop performs!'):
         <p>{emission[fwl_cluster]}</p>
     </div>
 
+    <div class="info-card" style="background-color: {get_color_util(fwl_cluster)};">
+        <h4>Utilisation for {crop_name}</h4>
+        <p>{utilisation[fwl_cluster]}</p>
+    </div>
     """, unsafe_allow_html=True)
