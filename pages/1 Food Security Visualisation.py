@@ -12,8 +12,7 @@ st.title('Data Visualization')
 
 st.header('Crop Analysis')
 
-main_df = pd.read_csv("df_fs.csv")
-st.dataframe(main_df)
+
 
 df_MlsAreaCrop = pd.read_csv('df_MlsAreaCrop.csv')
 df_MlsMerge = pd.read_csv('df_MlsMerge.csv')
@@ -113,6 +112,6 @@ fig.update_layout(coloraxis_colorbar=dict(tickvals=list(color_map.keys()),
 st.plotly_chart(fig)
 
 #========================================================================#
-st.subheader('Result of Clustered FP Dataset')
-main_df = pd.read_csv("df_prod_copy.csv")
+st.subheader('Transformend Dataset')
+main_df = pd.read_csv("df_fs.csv")
 st.dataframe(main_df)
