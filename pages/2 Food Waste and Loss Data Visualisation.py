@@ -13,8 +13,7 @@ st.title('Data Visualization')
 
 st.header('Crop Analysis')
 
-fwl_transformed = pd.read_csv("fwl_transformed.csv")
-st.dataframe(fwl_transformed)
+
 
 
 
@@ -180,8 +179,8 @@ fig.update_layout(title='Correlation Heatmap')
 st.plotly_chart(fig)
 st.divider()
 
-st.image("fwl.jpg", use_column_width=True)
-
+fwl_transformed = pd.read_csv("fwl_transformed.csv")
+st.dataframe(fwl_transformed)
 # # ==============================Top 10 Items with Highest Total Loss===========================================
 # top_loss_items = fwl_transformed.groupby('Item')['Loss'].sum().sort_values(ascending=False).head(10)
 
