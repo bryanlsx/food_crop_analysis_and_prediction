@@ -139,8 +139,4 @@ if st.button('See how your crop performs!'):
         <p>{emission[fwl_cluster]}</p>
     </div>
 
-    <div class="info-card" style="background-color: {get_color_util(fwl_cluster)};">
-        <h4>Utilisation for {crop_name}</h4>
-        <p>{utilisation[fwl_cluster]}</p>
-    </div>
     """, unsafe_allow_html=True)
